@@ -43,20 +43,19 @@ const expressConfig = (app) => {
   app.use(helmet());
   app.disable('x-powered-by');
 
-// ----------------------- SERVER HEADERS ----------------------
+  // ----------------------- SERVER HEADERS ----------------------
   app.use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Origin', '*');
-    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
     res.setHeader('Access-Control-Allow-Headers', 'Authorization, Origin, Content-Type, Accept');
     res.setHeader('Access-Control-Allow-Credentials', true);
     next();
   });
-// ----------------------- SERVER HEADERS ----------------------
+  // ----------------------- SERVER HEADERS ----------------------
 
-
-// ---------------------- ROUTES --------------------------
-   // app.use('/api/v1/admin', adminRoutes);
-// ------------------------ END OF ROUTES -------------------
+  // ---------------------- ROUTES --------------------------
+  // app.use('/api/v1/admin', adminRoutes);
+  // ------------------------ END OF ROUTES -------------------
   app.use((req, res) => res.status(404).json({
     message: 'Not Found',
     status: 404

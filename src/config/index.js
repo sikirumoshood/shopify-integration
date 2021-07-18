@@ -3,15 +3,7 @@ import test from './environment/test';
 import production from './environment/production';
 import staging from './environment/staging';
 
-const defaults = {
-  auth: {
-    subject: 'LoginToken',
-    expiresIn: '720h' // days
-  },
-  paginationLimit: 50,
-  initialization_vector_length: 16,
-  passwordResetTokenExpiresIn: 24 // hrs
-};
+const defaults = {};
 
 // Return configuration based on current environment
 const ENV = process.env.NODE_ENV || 'development';
