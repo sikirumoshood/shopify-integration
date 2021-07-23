@@ -20,22 +20,19 @@
     "start": "node dist/index.js",
     "clean": "rm -rf build && mkdir build",
     "build-babel": "babel src/ --out-dir build --ignore node_modules,babel.config.js,.github,jest.config.js",
-    "build": "npm run clean && npm run build-babel"
+    "build": "npm run clean && npm run build-babel",
+    "seed-orders": "node_modules/@babel/node/bin/babel-node.js src/scripts/seed-orders/OrderSeeder.js",
+    "fetch-orders": "node_modules/@babel/node/bin/babel-node.js src/scripts/fetch-orders/OrderProcessor.js"
   },
   "author": {
     "name": "Sikiru moshood"
   },
   "license": "MIT",
   "dependencies": {
-    "axios": "^0.19.0",
-    "express": "^4.17.1",
-    "file-stream-rotator": "0.0.7",
-    "helmet": "^3.3.0",
-    "inquirer": "^7.1.0",
-    "moment": "^2.25.3",
-    "body-parser": "^1.15.2",
-    "morgan": "^1.7.0",
-    "winston": "^2.3.0"
+    "json2csv": "^5.0.6",
+    "node-fetch": "^2.6.1",
+    "object-path": "^0.11.5",
+    "uuid": "^8.3.2"
   },
   "devDependencies": {
     "@babel/cli": "^7.8.4",
