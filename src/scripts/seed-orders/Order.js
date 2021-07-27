@@ -34,8 +34,8 @@ class Order {
                 throw new Error(resp.errors)
             }
 
+            console.log(`:::ORDER CREATED SUCCESSFULLY - ORDER ID: [${resp.order.id}], CUSTOMER: [${resp.order.email}]:::`);
         }catch(e){
-            console.error('Failed to create order on shopify: ', e);
             throw(e)
         }
     }

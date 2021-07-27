@@ -59,11 +59,11 @@ class OrderSeeder {
       const orderParams = { accessToken, shop, orderData }
       await new Order(orderParams).save();
       ++this.count;
+      console.log(`:::: TOTAL ORDERS CREATED: [${this.count}] ::::\n`)
     }catch(e) {
-      console.error(`Failed to create order [${this.count}] from script, will retry: `, e);
+      console.error('::: FAILED TO CREATE ORDER FROM SCRIPT, RETRYING AFTER 1 MINUTE...', e);
       await this.delay()
     }
-    
   }
 
   /**

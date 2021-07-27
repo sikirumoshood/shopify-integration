@@ -40,6 +40,25 @@ class OrderData {
   }
 
   /**
+   * @description Extracts shipping info from random user data 
+   * @param {object} userData 
+   * @returns {object}
+   */
+   buildShippingInfoFrom (userData) {
+      const userDataObject = obj(userData);
+      return {
+          first_name: userDataObject.get('name.first'),
+          last_name: userDataObject.get('name.last'),
+          address1: `${userDataObject.get('location.street.number')}${userDataObject.get('location.street.name')}`,
+          phone: userDataObject.get('cell'),
+          city: userDataObject.get('location.city'),
+          province: 'Ontario',
+          country: userDataObject.get('location.country'),
+          zip: 'K2P 1L4'
+      }
+    }
+
+  /**
    * @description Ensures the required fields are provided
    * @returns {void}
    */
@@ -78,7 +97,8 @@ class OrderData {
       const customer = this.extractCustomerFrom(user);
       const billing_address = this.extractBillingInfoFrom(user);
       const email = user.email;
-      const schemaParams = { customer, billing_address, email };
+      const shipping_address = this.buildShippingInfoFrom(user);
+      const schemaParams = { customer, billing_address, email, shipping_address };
       const orderData = new DataSchema(schemaParams).get();
       return orderData
 

@@ -171,21 +171,27 @@ class DataSchema {
   }
 
   get() {
-    const { customer = null, billing_address = null, email = null } = this.params;
+    const { customer = null, billing_address = null, email = null, shipping_address = null } = this.params;
+    
+    const newSchema = this.schema;
 
     if (customer) {
-      this.schema.customer = customer;
+      newSchema.customer = customer;
     }
 
     if(billing_address){
-      this.schema.billing_address = billing_address;
+      newSchema.billing_address = billing_address;
+    }
+
+    if(shipping_address){
+      newSchema.shipping_address = shipping_address;
     }
 
     if(email){
-      this.schema.email = email;
+      newSchema.email = email;
     }
 
-    return this.schema;
+    return newSchema;
   }
 }
 

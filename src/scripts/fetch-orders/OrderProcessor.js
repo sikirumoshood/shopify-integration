@@ -83,7 +83,7 @@ class OrderProcessor {
       this.orderFetcher.exportAsCsv(orderData);
 
     }catch(e) {
-      console.error(`Failed to fetch order [${this.count}] from script, will retry: `, e);
+      console.error('FAILED TO FETCH ORDER FROM SCRIPT, WILL RETRY AFTER 1 MINUTE', e);
       await this.delay()
     }
     
